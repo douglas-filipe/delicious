@@ -1,0 +1,61 @@
+import { Container, Login, Signup } from "./styles"
+
+import { LoginModal } from "../loginModal"
+import { SignupModal } from "../signupModal"
+import { useState } from "react"
+import { useAuth } from "../../../providers/Auth"
+import { useHistory } from "react-router"
+
+
+export const UserModal = () => {
+
+    const { userId } = useAuth()
+    const history = useHistory()
+
+    const openLoginModal = () => {
+        setLoginModal(true)
+        setSignupModal(false)
+    }
+
+    const openSignupModal = () => {
+        setSignupModal(true)
+        setLoginModal(false)
+    }
+
+    const [loginModal, setLoginModal] = useState(false)
+    const [signupModal, setSignupModal] = useState(false)
+
+    const logout = () => {
+        localStorage.clear()
+        window.location.reload()
+    }
+
+    const handleProfile = () => {
+        history.push("/adm/profile")
+    }
+
+ 
+    return (
+        <>
+
+            <LoginModal open={loginModal} close={setLoginModal} />
+            <SignupModal open={signupModal} close={setSignupModal} />
+
+            <Container>
+                {userId ?
+                    <>
+                        <p onClick={handleProfile}>Perfil</p>
+                        <p onClick={logout}>Sair</p>
+                    </>
+                    :
+                    <>
+                        <Login onClick={openLoginModal}>Entrar</Login>
+                        <Signup onClick={openSignupModal}>Cadastre-se</Signup>
+                    </>
+
+                }
+            </Container>
+
+        </>
+    )
+}
