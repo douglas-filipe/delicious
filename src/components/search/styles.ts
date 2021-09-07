@@ -3,6 +3,13 @@ import { openProps } from "../../types/open";
 
 export const Container = styled.div<openProps>`
 
+    form{
+        height: 25px;
+        display: flex;
+        justify-content: space-between;
+
+    }
+
     width: 200px;
     height: 25px;
     display: flex;
@@ -25,12 +32,22 @@ export const Container = styled.div<openProps>`
         background: none;
         padding-left: 10px;
         width: 150px;
+        height: 25px;
+        line-height: 25px;
+    }
+
+    button{
+        border: none;
+        background: none;
+        padding: 0;
+        margin: 0;
     }
 
     svg{
         color: black;
         width: 20px;
         height: 20px;
+        line-height: 25px;
     }
 
 `

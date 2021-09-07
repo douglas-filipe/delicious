@@ -34,7 +34,7 @@ export const Header = () => {
     return (
         <Container>
 
-            <Search open={search}/>
+            <Search open={search} search={setSearch}/>
 
             <BrowseCategory>
 

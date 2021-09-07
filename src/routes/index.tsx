@@ -3,6 +3,7 @@ import { Home } from "../pages/home"
 import { Profile } from "../pages/profile"
 import { ProfileUserAdm } from "../pages/profileUserAdm"
 import { Revenue } from "../pages/revenue"
+import { SearchResults } from "../pages/searchResults"
 import { useAuth } from "../providers/Auth"
 
 export const Routes = () => {
@@ -31,7 +32,7 @@ export const Routes = () => {
             }
 
             <Route path="/search/:name" exact>
-
+                <SearchResults/>
             </Route>
 
 
