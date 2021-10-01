@@ -15,12 +15,14 @@ export const RevenuesList = () => {
     }, [])
 
     const revenues = async () => {
-        const response = await api.get("/revenues")
+        const response = await api.get("/revenues/list")
         setList(response.data)
     }
 
-
+    
+    
     const [list, setList] = useState<listRevenue[]>([] as listRevenue[])
+    console.log(list)
 
     return (
         <Container>

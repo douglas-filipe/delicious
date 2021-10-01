@@ -7,8 +7,6 @@ import jwt_decode from 'jwt-decode'
 import api from "../../../services/api"
 import { Container, Closed } from "./styles"
 import { modalOpenProps } from "../../../types/modalOpenProps"
-import { useState } from "react"
-import { useHistory } from "react-router"
 
 
 interface DataForm{
@@ -21,8 +19,6 @@ interface iDecode{
 }
 
 export const LoginModal = ({ open, close }: modalOpenProps) => {
-
-    const history = useHistory()
 
     const closeModal = () => {
         close(false)
@@ -47,6 +43,7 @@ export const LoginModal = ({ open, close }: modalOpenProps) => {
         const {sub} = await decodeToken
 
         await localStorage.setItem('@delicious', sub)
+        await localStorage.setItem('@delicious/token', accessToken)
 
         window.location.reload()
 

@@ -3,7 +3,8 @@ import jwt_decode from 'jwt-decode'
 
 
 interface AuthProviderData{
-    userId: string
+    userId: string,
+    token: string
 }
 
 interface AuthProviderProp{
@@ -17,9 +18,9 @@ const AuthContext = createContext<AuthProviderData>({} as AuthProviderData)
 export const AuthProvider = ({children}: AuthProviderProp) => {
 
     const [userId, setUserId] = useState(localStorage.getItem("@delicious") || '')
-
+    const token = localStorage.getItem("@delicious/token") || ""
     return(
-        <AuthContext.Provider value={{userId}}>
+        <AuthContext.Provider value={{userId, token}}>
             {children}
         </AuthContext.Provider>
     )

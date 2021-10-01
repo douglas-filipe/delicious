@@ -7,6 +7,7 @@ import { useEffect, useState } from "react"
 
 import { listRevenue } from '../../types/listRevenue'
 import { idParams } from '../../types/idParams'
+import { Comments } from "../../components/comments"
 
 
 
@@ -25,7 +26,7 @@ export const Revenue = () => {
     }, [])
 
     const reqRevenue = async () => {
-        const response = await api.get(`/revenues/${id}`)
+        const response = await api.get(`/revenues/list`)
         setRevenueDetails([response.data])
     }
 
@@ -34,7 +35,7 @@ export const Revenue = () => {
     }
 
     const [revenueDetails, setRevenueDetails] = useState<listRevenue[]>([] as listRevenue[])
-
+    console.log(revenueDetails)
 
     return (
         <Container>
@@ -58,6 +59,8 @@ export const Revenue = () => {
                         <h1>Modo de preparo:</h1>
                         {reve.preparation}
                     </section>
+
+                    <Comments id={reve.id}/>
 
                 </Content>
             })}

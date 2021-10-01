@@ -34,7 +34,7 @@ export const RevenueContent = ({ revenue }: listRevenueProps) => {
   
 
     const {title, userName, userId, img, id} = revenue
-
+    console.log(img)
 
     return (
         <Container>
@@ -42,7 +42,7 @@ export const RevenueContent = ({ revenue }: listRevenueProps) => {
                 
 
                 <Content onClick={() => selectRevenue(id)}>
-                    <img src={img}/>
+                    <img src={`http://localhost:3001/${img}`}/>
                     <h3>{title}</h3>
                     <p>Enviado por <span>{userName}</span></p>
                 </Content>
