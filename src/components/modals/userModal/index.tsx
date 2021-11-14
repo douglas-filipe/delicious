@@ -3,7 +3,7 @@ import { Container, Login, Signup } from "./styles"
 import { LoginModal } from "../loginModal"
 import { SignupModal } from "../signupModal"
 import { useState } from "react"
-import { useAuth } from "../../../providers/Auth"
+import { useAuth } from "../../../contexts/Auth"
 import { useHistory } from "react-router"
 
 
@@ -42,18 +42,7 @@ export const UserModal = () => {
             <SignupModal open={signupModal} close={setSignupModal} />
 
             <Container>
-                {userId ?
-                    <>
-                        <p onClick={handleProfile}>Perfil</p>
-                        <p onClick={logout}>Sair</p>
-                    </>
-                    :
-                    <>
-                        <Login onClick={openLoginModal}>Entrar</Login>
-                        <Signup onClick={openSignupModal}>Cadastre-se</Signup>
-                    </>
-
-                }
+                
             </Container>
 
         </>
