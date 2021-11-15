@@ -38,9 +38,6 @@ export const UserModal = () => {
     return (
         <>
 
-            <LoginModal open={loginModal} close={setLoginModal} />
-            <SignupModal open={signupModal} close={setSignupModal} />
-
             <Container>
                 
             </Container>

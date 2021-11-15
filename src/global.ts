@@ -7,7 +7,7 @@ export const GlobalStyle = createGlobalStyle`
         height: 100vh;
         padding: 0;
         box-sizing: border-box;
-        background: whitesmoke;
+        background: #F9F9F9;
     }
 
 `

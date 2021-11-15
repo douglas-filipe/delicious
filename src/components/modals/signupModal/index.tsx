@@ -1,23 +1,23 @@
 import { Container, Closed } from "./styles"
 
 import { modalOpenProps } from "../../../types/modalOpenProps"
-
 import { useForm } from "react-hook-form"
 import { yupResolver } from '@hookform/resolvers/yup'
 import * as yup from 'yup'
 import api from "../../../services/api"
+import { Input, Button, CloseButton } from '@chakra-ui/react'
 
-interface DataForm{
+interface DataForm {
     name: string,
     email: string,
     password: string
 }
 
 
-export const SignupModal = ({ open, close }: modalOpenProps) => {
+export const SignupModal = () => {
 
     const closeModal = () => {
-        close(false)
+        //close(false)
     }
 
     const schema = yup.object().shape({
@@ -26,7 +26,7 @@ export const SignupModal = ({ open, close }: modalOpenProps) => {
         password: yup.string().required('*Campo obrigatório')
     })
 
-    const { register, handleSubmit, formState: {errors} } = useForm<DataForm>({
+    const { register, handleSubmit, formState: { errors } } = useForm<DataForm>({
         resolver: yupResolver(schema)
     })
 
@@ -36,31 +36,37 @@ export const SignupModal = ({ open, close }: modalOpenProps) => {
     }
 
     return (
-        <Container open={open}>
+        <Container>
             <form onSubmit={handleSubmit(onSubmit)}>
-                <Closed onClick={closeModal}>X</Closed>
-                <h3>Crie sua conta</h3>
+                <CloseButton className="Close" onClick={closeModal} size="md"/>
+                <h1>Crie sua conta</h1>
 
                 <label>Nome:</label>
-                <input
-                    type="text"
-                    {...register('name')}
+                <Input 
+                    size="sm"   
+                    variant="outline"
+                    placeholder="Digite seu nome"
+                    {...register('name')} 
                 />
 
                 <label>Email:</label>
-                <input
-                    type="text"
-                    {...register('email')}
+                <Input 
+                    size="sm"  
+                    variant="outline"
+                    placeholder="Digite seu email"
+                    {...register('email')}    
                 />
-
                 <label>Senha:</label>
-                <input
+                <Input 
+                    size="sm"  
                     type="password"
-                    {...register('password')}
+                    variant="outline"
+                    placeholder="Digite sua senha"
+                    {...register('password')}    
                 />
-
-                <button type="submit">Enviar</button>
-
+                
+                <Button className="Submit" type="submit" variant="solid">Enviar</Button>
+                <p>Já tem uma conta? <a href="#">Entre</a></p>
             </form>
         </Container>
 

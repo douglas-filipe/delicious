@@ -1,11 +1,14 @@
 import { GlobalStyle } from "./global";
 import { Routes } from "./routes";
+import { ChakraProvider } from "@chakra-ui/provider";
 
 const App = () => {
   return (
     <>
-    <GlobalStyle/>
-    <Routes/>
+      <ChakraProvider>
+        <GlobalStyle />
+        <Routes />
+      </ChakraProvider>
     </>
   );
 }
