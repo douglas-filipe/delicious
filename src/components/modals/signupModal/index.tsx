@@ -1,22 +1,13 @@
-import { Container, Closed } from "./styles"
-
-import { modalOpenProps } from "../../../types/modalOpenProps"
+import { Container } from "./styles"
 import { useForm } from "react-hook-form"
 import { yupResolver } from '@hookform/resolvers/yup'
 import * as yup from 'yup'
 import api from "../../../services/api"
-import { Input, Button, CloseButton, Spinner, useToast } from '@chakra-ui/react'
-import { BeatLoader, BarLoader, BounceLoader, ClockLoader, CircleLoader } from 'react-spinners'
+import { Input, CloseButton, useToast } from '@chakra-ui/react'
+import { BeatLoader } from 'react-spinners'
 import { useState } from "react"
-import {css} from '@emotion/react'
-interface DataForm {
-    username: string,
-    email: string,
-    password: string
-}
-
-
-
+import { css } from '@emotion/react'
+import { DataForm } from "../../../types/dataForm"
 
 export const SignupModal = () => {
 
@@ -51,7 +42,7 @@ export const SignupModal = () => {
         }
     }
 
-    
+
 
     return (
         <Container>
@@ -85,7 +76,16 @@ export const SignupModal = () => {
                     placeholder="Digite sua senha"
                     {...register('password')}
                 />
-                <button disabled={loadForm} className="Submit">{loadForm ? <BeatLoader css={estilo} size="15" color="white"/> : "Enviar"}</button>
+                <button
+                    disabled={loadForm}
+                    className="Submit">{loadForm ?
+                        <BeatLoader
+                            css={estilo}
+                            size="15"
+                            color="white"
+                        />
+                        : "Enviar"}
+                </button>
                 <p>Já tem uma conta? <a href="#">Entre</a></p>
             </form>
         </Container>
@@ -96,5 +96,5 @@ export const SignupModal = () => {
 const estilo = css`
     display: flex;
     justify-content: center;
-    align-items: center
+    align-items: center;
 `;
