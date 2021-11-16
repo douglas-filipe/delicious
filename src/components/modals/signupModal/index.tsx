@@ -5,8 +5,8 @@ import { useForm } from "react-hook-form"
 import { yupResolver } from '@hookform/resolvers/yup'
 import * as yup from 'yup'
 import api from "../../../services/api"
-import { Input, Button, CloseButton } from '@chakra-ui/react'
-
+import { Input, Button, CloseButton, Spinner } from '@chakra-ui/react'
+import {BeatLoader} from 'react-spinners'
 interface DataForm {
     name: string,
     email: string,
@@ -21,9 +21,9 @@ export const SignupModal = () => {
     }
 
     const schema = yup.object().shape({
-        name: yup.string().required('*Campo obrigatório'),
-        email: yup.string().email('Email inválido').required('*Campo obrigatório'),
-        password: yup.string().required('*Campo obrigatório')
+        name: yup.string().required(' *Campo obrigatório'),
+        email: yup.string().email(' Email inválido!').required(' *Campo obrigatório'),
+        password: yup.string().required(' *Campo obrigatório')
     })
 
     const { register, handleSubmit, formState: { errors } } = useForm<DataForm>({
@@ -38,34 +38,41 @@ export const SignupModal = () => {
     return (
         <Container>
             <form onSubmit={handleSubmit(onSubmit)}>
-                <CloseButton className="Close" onClick={closeModal} size="md"/>
+                <CloseButton className="Close" onClick={closeModal} size="md" />
                 <h1>Crie sua conta</h1>
 
-                <label>Nome:</label>
-                <Input 
-                    size="sm"   
+                <label>Nome: <span>{errors.name?.message}</span></label>
+                <Input
+                    size="sm"
                     variant="outline"
                     placeholder="Digite seu nome"
-                    {...register('name')} 
+                    {...register('name')}
                 />
 
-                <label>Email:</label>
-                <Input 
-                    size="sm"  
+                <label>Email: <span>{errors.email?.message}</span></label>
+                <Input
+                    size="sm"
                     variant="outline"
                     placeholder="Digite seu email"
-                    {...register('email')}    
+                    {...register('email')}
                 />
-                <label>Senha:</label>
-                <Input 
-                    size="sm"  
+                <label>Senha: <span>{errors.password?.message}</span></label>
+                <Input
+                    size="sm"
                     type="password"
                     variant="outline"
                     placeholder="Digite sua senha"
-                    {...register('password')}    
+                    {...register('password')}
                 />
-                
-                <Button className="Submit" type="submit" variant="solid">Enviar</Button>
+
+                <Button
+                    isLoading={false}
+                    spinner={<BeatLoader size={8} color="white" />}
+                    className="Submit"
+                    type="submit"
+                    variant="solid">
+                    Enviar
+                </Button>
                 <p>Já tem uma conta? <a href="#">Entre</a></p>
             </form>
         </Container>

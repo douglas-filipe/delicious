@@ -26,7 +26,7 @@ export const Container = styled.div`
     h1{
         font-size: 20px;
         text-align: center;
-        margin: 10px 0;
+        margin-bottom: 10px;
         color: #444444;
         font-weight: bold;
     }
@@ -71,6 +71,25 @@ export const Container = styled.div`
 
     p a{
         color: #F9575A
+    }
+
+    span{
+        color: red;
+    }
+
+    @media(min-width: 768px){
+        form{
+            width: 356px;
+        }
+
+        h1{
+            font-size: 28px;
+        }
+
+        .Close{
+            width: 40px;
+            height: 40px;
+        }
     }
 `
 
