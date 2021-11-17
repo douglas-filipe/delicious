@@ -1,18 +1,27 @@
 import { Image } from "@chakra-ui/react";
 import styled from "styled-components";
 
-export const Container = styled.div`
+export const Content = styled.div`
+  height: 40vh;
+  width: 90vw;
   overflow: hidden;
 
-  display: none;
+  display: grid;
+  gap: 5px;
+  grid-template-areas:
+    "MainImg MainImg"
+    "SecImg TirImg"
+    "Division Division";
+
+  img {
+    box-sizing: border-box;
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+  }
 
   @media (min-width: 768px) {
-    height: 60vh;
-    width: 90vw;
-    display: grid;
     /* rows /columns */
-
-    grid-template: 3fr 3fr / 3fr 3fr 3fr;
     gap: 30px;
     grid-template-areas:
       "MainImg MainImg SecImg"
@@ -20,10 +29,6 @@ export const Container = styled.div`
       "Division Division Division";
     img {
       transition: transform 0.5s ease;
-      box-sizing: border-box;
-      object-fit: cover;
-      width: 100%;
-      height: 100%;
     }
     img:hover {
       transform: scale(1.2);
@@ -36,31 +41,25 @@ export const Images = styled(Image)`
 `;
 
 export const MainImg = styled.div`
-  @media (min-width: 768px) {
-    grid-area: MainImg;
-    overflow: hidden;
-  }
+  grid-area: MainImg;
+  overflow: hidden;
 `;
 
 export const SecImg = styled.div`
   grid-area: SecImg;
   overflow: hidden;
-  font-size: 0.8rem;
-  display: flex;
 `;
 
 export const TirImg = styled.div`
   grid-area: TirImg;
   overflow: hidden;
-  font-size: 0.8rem;
-  display: flex;
-  align-items: flex-end;
 `;
 
 export const Division = styled.div`
   grid-area: Division;
   height: 10px;
 
-  margin-top: 40px;
   background-color: #f9575a;
 `;
+
+export const Container = styled.div``;

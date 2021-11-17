@@ -7,13 +7,9 @@ export const Container = styled.div`
   display: flex;
 
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
 `;
 
 export const Headers = styled.div`
-  grid-area: Headers;
-
   display: flex;
   align-items: center;
   justify-content: center;
@@ -23,13 +19,14 @@ export const Highlights = styled.div`
 
   display: flex;
   flex-direction: column;
+
   align-items: center;
   justify-content: center;
 `;
 export const Recent = styled.div`
+  display: flex;
   grid-area: Recent;
 
-  display: flex;
   align-items: center;
   justify-content: center;
 `;

@@ -5,13 +5,12 @@ export const Home = () => {
   return (
     <Container>
       <Headers></Headers>
+
       <Highlights>
         <RecipesHighLight />
       </Highlights>
-      <Recent>
-        <h1>Receitas Recentes</h1>
-        <RecipeTips />
-      </Recent>
+
+      <Recent>{/* <RecipeTips /> */}</Recent>
       <Footers></Footers>
     </Container>
   );
