@@ -1,8 +1,8 @@
-import { SignupModal } from "../../components/modals/signupModal"
+import { Menu } from "../../components/menu"
 
 export const Home = () => {
 
     return (
-        <SignupModal/>
+        <Menu/>
     )
 }

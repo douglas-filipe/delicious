@@ -5,18 +5,23 @@ import * as yup from 'yup'
 import api from "../../../services/api"
 import { Input, CloseButton, useToast } from '@chakra-ui/react'
 import { BeatLoader } from 'react-spinners'
-import { useState } from "react"
+import { Dispatch, useState } from "react"
 import { css } from '@emotion/react'
 import { DataForm } from "../../../types/dataForm"
 
-export const SignupModal = () => {
+interface modalProps{
+    openSignupModal: boolean,
+    setOpenSignupModal: (openSignupModal: boolean) => void
+}
+
+export const SignupModal = ({openSignupModal, setOpenSignupModal}:modalProps) => {
 
     const toast = useToast()
 
     const [loadForm, setLoadForm] = useState<boolean>(false)
 
     const closeModal = () => {
-        //close(false)
+        setOpenSignupModal(false)
     }
 
     const schema = yup.object().shape({
@@ -45,7 +50,7 @@ export const SignupModal = () => {
 
 
     return (
-        <Container>
+        <Container openSignupModal={openSignupModal}>
             <form onSubmit={handleSubmit(onSubmit)}>
                 <CloseButton className="Close" onClick={closeModal} size="md" />
                 <h1>Crie sua conta</h1>

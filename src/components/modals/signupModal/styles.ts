@@ -1,7 +1,10 @@
 import styled from "styled-components";
-import { openProps } from "../../../types/open";
 
-export const Container = styled.div`
+interface modalProps{
+    openSignupModal: boolean
+}
+
+export const Container = styled.div<modalProps>`
     width: 100vw;
     height: 100vh;
     background: rgba(1, 1, 1, 0.6);
@@ -14,6 +17,7 @@ export const Container = styled.div`
     -ms-overflow-style: none; /* for Internet Explorer, Edge */
     scrollbar-width: none; /* for Firefox */
     overflow-y: scroll;
+    visibility: ${props => props.openSignupModal ? "visible" : "hidden"};
 
     form{
         width: 280px;
