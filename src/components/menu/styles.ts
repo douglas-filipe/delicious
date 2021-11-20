@@ -46,9 +46,6 @@ export const Container = styled.header<menuProps>`
             background: none;
         }
 
-        button:nth-child(1){
-            
-        }
     }
 
     .LogoMenuDrop{
@@ -63,6 +60,7 @@ export const Container = styled.header<menuProps>`
     
     .Search-Desktop{
         display: none;
+        cursor: pointer;
     }
 
 
@@ -127,6 +125,7 @@ export const Icons = styled.div`
         display: flex;
         justify-content: center;
         align-items: center;
+        cursor: pointer;
 
         span{
             margin-left: 20px;
@@ -182,5 +181,65 @@ export const Desktop = styled.div`
             margin-left: 28px;
         }
        
+    }
+`
+
+export const MenuContainer = styled.div`
+    width: 100%;
+    height: 420px;
+    position: absolute;
+    transform: translateY(15%);
+    top: 20px;
+    background: rgb(188,64,67);
+    background: linear-gradient(0deg, rgba(188,64,67,0) 0%, rgba(243,85,88,1) 2%, rgba(243,85,88,1) 84%, rgba(188,64,67,1) 100%);
+
+    .menuListCategories{
+        margin-top: 20px;
+        width: 100%;
+        height: 200px;
+        display: flex;
+        gap: 50px;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .menuListCategories .category{
+        color: #FECCBC;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        font-size: 24px;
+        font-weight: bold;
+    }
+
+    .menuListCategories .category:hover{
+        color: white;
+    }
+
+    .category svg{
+        width: 24px;
+        height: 24px;
+        margin-bottom: 3px;
+    }
+
+    .category h3{
+        margin: 0;
+        padding: 0;
+    }
+
+`
+
+export const Mobile = styled.div`
+    display: flex;
+    justify-content: space-between;
+    button{
+        margin: 20px;
+        font-weight: bold;
+    }
+
+    .Enter{
+        background: white;
+        color: #F9575A;
     }
 `
