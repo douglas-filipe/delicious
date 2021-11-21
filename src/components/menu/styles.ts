@@ -18,6 +18,7 @@ export const Container = styled.header`
     img{
         width: 120px;
         margin-right: 10px;
+        user-select: none;
     }
 
 
@@ -39,6 +40,7 @@ export const Container = styled.header`
             margin: auto;
             color: #F9575A;
             background: white;
+            
         }
 
         button:hover{
@@ -102,6 +104,7 @@ export const Icons = styled.div`
     
     svg:nth-child(1){
         margin-left: 20px;
+        user-select: none;
     }
 
     svg:nth-child(2){
@@ -129,6 +132,7 @@ export const Icons = styled.div`
         span{
             margin-left: 20px;
             font-size: 24px;
+            user-select: none;
         }
         -webkit-tap-highlight-color: transparent;
     }
@@ -193,11 +197,26 @@ export const MenuContainer = styled.div<openMenuProps>`
     position: fixed;
     background: rgba(1, 1, 1, 0.7);
     visibility: ${props => props.openMenu ? "visible" : "hidden"};
+    transition: 300ms;
+    opacity: ${props => props.openMenu ? "1" : "0"};
+
+    .BarraLateral{
+        display: none;
+    }
     
     .menuListCategories{
         width: 80vw;
         height: 100vh;
         background: #F9575A;
+        animation: ${props => props.openMenu ? "animationMenu 300ms" : "none"};
+        transition: 300ms;
+        transform: ${props => props.openMenu ? "none" : "translateX(-70%)"};
+    }
+
+    @keyframes animationMenu{
+        0%{
+            transform: translateX(-70%);
+        }
     }
 
     .menuListCategories .category{
@@ -207,6 +226,7 @@ export const MenuContainer = styled.div<openMenuProps>`
         align-items: center;
         font-size: 24px;
         font-weight: bold;
+        cursor: pointer;
     }
 
     .menuListCategories .category:hover{
@@ -232,6 +252,66 @@ export const MenuContainer = styled.div<openMenuProps>`
         justify-content: center;
         align-items: center;
         margin: auto;
+    }
+
+    @media(min-width: 768px){
+        position: absolute;
+        background: none;
+        width: 100vw;
+        height: 83px;
+        margin-top: 82px;
+
+        .menuListCategories{
+            width: 100vw;
+            height: 83px;
+            background: #F9575A;
+            background: rgb(243,85,88);
+            background: linear-gradient(0deg, rgba(243,85,88,1) 0%, rgba(243,85,88,1) 2%, rgba(255,107,110,1) 91%, rgba(188,64,67,1) 100%);
+            animation: ${props => props.openMenu ? "animationMenuDesktop 300ms" : "none"};
+            transition: 300ms;
+            transform: ${props => props.openMenu ? "none" : "none"};
+        }
+
+        .categories{
+            width: 100%;
+            height: 83px;
+            gap: 20px;
+        }
+
+        .BarraLateral{
+            display: initial;
+            width: 1px;
+            height: 70%;
+            background: black;
+            opacity: 0.8;
+        }
+
+        .menuListCategories .category{
+            color: #FECCBC;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        @keyframes animationMenuDesktop{
+            0%{
+                opacity: 0;
+            }
+        }
+    }
+
+    @media(min-width: 1024px){
+        .categories{
+            gap: 40px;
+        }
+    }
+
+    @media(min-width: 1440px){
+        .categories{
+            gap: 80px;
+        }
     }
 
     
@@ -272,5 +352,17 @@ export const Mobile = styled.div`
         margin-top: 10px;
         cursor: pointer;
     }
+
+    @media(min-width: 768px){
+        button{
+            display: none;
+        }
+
+        .closeMenu{
+            display: none;
+        }
+    }
+
+    
 
 `

@@ -18,6 +18,9 @@ export const Container = styled.div<modalProps>`
     scrollbar-width: none; /* for Firefox */
     overflow-y: scroll;
     visibility: ${props => props.openSignupModal ? "visible" : "hidden"};
+    transition: 300ms;
+    opacity: ${props => props.openSignupModal ? "1" : "0"};
+
 
     form{
         width: 280px;
@@ -30,7 +33,22 @@ export const Container = styled.div<modalProps>`
         border-radius: 12px;
         padding: 12px 20px;
         color: #444444;
+        animation: ${props => props.openSignupModal ? "animationSignup 400ms": "none"};
+        transform: ${props => props.openSignupModal ? "scale(100%)": "scale(50%)"};
+        transition: 300ms;
 
+    }
+
+    @keyframes animationSignup{
+        0%{
+            transform: scale(60%);
+        }
+
+        70%{
+
+            transform: scale(110%);
+
+        }
     }
     
     ::-webkit-scrollbar {

@@ -12,25 +12,38 @@ import { FaCandyCane } from 'react-icons/fa'
 import { AiOutlineCloseCircle } from 'react-icons/ai'
 import { LoginModal } from "../modals/loginModal"
 import { useAuth } from "../../contexts/Auth"
+import {FaHamburger} from 'react-icons/fa'
 
 export const Menu = () => {
 
     const [openMenu, setOpenMenu] = useState<boolean>(false)
-
-    const {modalLogin, setModalSignup, modalSignup, setModalLogin} = useAuth()
+    const { modalLogin, setModalSignup, modalSignup, setModalLogin } = useAuth()
 
     return (
         <Container>
             <SignupModal openSignupModal={modalSignup} setOpenSignupModal={setModalSignup} />
-            <LoginModal openLoginModal={modalLogin} setOpenLoginModal={setModalLogin}/>
+            <LoginModal openLoginModal={modalLogin} setOpenLoginModal={setModalLogin} />
             <Icons>
 
                 <Icon className="Search-Desktop" as={BiSearch} color="white" w={30} h={30} />
                 <div className="Barra"></div>
-                <div className="hamburguer" onClick={() => setOpenMenu(true)}>
-                    <Icon as={GiHamburgerMenu} color="white" w={30} h={30} />
-                    <span>Receitas</span>
-                </div>
+
+                {openMenu ?
+
+                    <div className="hamburguer" onClick={() => setOpenMenu(false)}>
+                        <Icon as={GiHamburgerMenu} color="white" w={30} h={30} />
+                        <span>Receitas</span>
+                    </div>
+
+                    :
+
+                    <div className="hamburguer" onClick={() => setOpenMenu(true)}>
+                        <Icon as={GiHamburgerMenu} color="white" w={30} h={30} />
+                        <span>Receitas</span>
+                    </div>
+
+                }
+
 
 
             </Icons>
@@ -50,7 +63,7 @@ export const Menu = () => {
                 <div className="menuListCategories">
 
                     <Mobile>
-                        <AiOutlineCloseCircle className="closeMenu" onClick={() => setOpenMenu(false)}/>
+                        <AiOutlineCloseCircle className="closeMenu" onClick={() => setOpenMenu(false)} />
                         <button className="Signup" onClick={() => setModalSignup(true)}>Cadastre-se</button>
                         <Button onClick={() => setModalLogin(true)} className="Enter">Entrar</Button>
 
@@ -63,6 +76,7 @@ export const Menu = () => {
                             <h3>Bolos</h3>
                         </div>
 
+                        <div className="BarraLateral"></div>
 
                         <div className="category">
 
@@ -70,6 +84,8 @@ export const Menu = () => {
                             <h3>Carnes</h3>
 
                         </div>
+
+                        <div className="BarraLateral"></div>
 
 
                         <div className="category">
@@ -79,6 +95,8 @@ export const Menu = () => {
 
                         </div>
 
+                        <div className="BarraLateral"></div>
+
 
                         <div className="category">
 
@@ -87,12 +105,16 @@ export const Menu = () => {
 
                         </div>
 
+                        <div className="BarraLateral"></div>
+
 
                         <div className="category">
-                            <FaCandyCane />
+                            <FaHamburger />
                             <h3>Salgados</h3>
 
                         </div>
+
+                        <div className="BarraLateral"></div>
 
 
                         <div className="category">

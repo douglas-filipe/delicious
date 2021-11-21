@@ -1,33 +1,8 @@
 import { useToast } from '@chakra-ui/toast'
-import { createContext, ReactNode, useContext, useState } from 'react'
-import api from '../../services/api'
+import { createContext, useContext, useState } from 'react'
+import { AuthProviderData, AuthProviderProp, iReqLogin } from '../../types/auth'
 import { DataForm } from '../../types/dataForm'
-
-
-interface iReqLogin{
-    username: string,
-    _id: string,
-    token: string
-
-}
-
-
-interface AuthProviderData {
-    modalLogin: boolean,
-    setModalLogin: (modalLogin: boolean) => void,
-    modalSignup: boolean,
-    setModalSignup: (modalSignup: boolean) => void,
-    userId: string,
-    reqLogin: (data: DataForm) => void,
-    loadForm: boolean,
-    setLoadForm: (loadForm: boolean) => void,
-    token: string
-}
-
-interface AuthProviderProp {
-    children: ReactNode
-}
-
+import api from '../../services/api'
 
 const AuthContext = createContext<AuthProviderData>({} as AuthProviderData)
 
@@ -48,7 +23,9 @@ export const AuthProvider = ({ children }: AuthProviderProp) => {
             await toast({ title: `Sucesso ao entrar em sua conta!`, status: 'success', isClosable: true, position: "top-right" })
             await setUserId(response.data._id)
             await setToken(response.data.token)
-            setLoadForm(false)
+            await setLoadForm(false)
+            setModalLogin(false)
+
         } catch {
             await toast({ title: `Email ou senha incorretos`, status: 'error', isClosable: true, position: "top-right" })
             setLoadForm(false)

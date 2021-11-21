@@ -38,10 +38,11 @@ export const SignupModal = ({ openSignupModal, setOpenSignupModal }: modalProps)
     const onSubmit = async (data: DataForm) => {
         setLoadForm(true)
         try {
-            const response = await api.post("/users/register", data)
-            console.log(response)
+            await api.post("/users/register", data)
             await toast({ title: `Sucesso ao criar a conta!`, status: 'success', isClosable: true, position: "top-right" })
-            setLoadForm(false)
+            await setLoadForm(false)
+            await setModalSignup(false)
+            setModalLogin(true)
         } catch {
             await toast({ title: `Email já cadastrado`, status: 'error', isClosable: true, position: "top-right" })
             setLoadForm(false)
