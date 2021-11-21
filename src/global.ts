@@ -8,6 +8,7 @@ export const GlobalStyle = createGlobalStyle`
         padding: 0;
         box-sizing: border-box;
         background: #F9F9F9;
+        -webkit-tap-highlight-color: transparent;
     }
 
 `

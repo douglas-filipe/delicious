@@ -1,76 +1,91 @@
+import { Container } from "./styles"
 import { useForm } from "react-hook-form"
 import { yupResolver } from '@hookform/resolvers/yup'
 import * as yup from 'yup'
-import jwt_decode from 'jwt-decode'
+import { Input, CloseButton } from '@chakra-ui/react'
+import { BeatLoader } from 'react-spinners'
+import { css } from '@emotion/react'
+import { DataForm } from "../../../types/dataForm"
+import { useAuth } from "../../../contexts/Auth"
 
-
-import api from "../../../services/api"
-import { Container, Closed } from "./styles"
-import { modalOpenProps } from "../../../types/modalOpenProps"
-
-
-interface DataForm{
-    email: string,
-    password: string
+interface modalProps {
+    openLoginModal: boolean,
+    setOpenLoginModal: (openSignupModal: boolean) => void
 }
 
-interface iDecode{
-    sub: string
-}
+export const LoginModal = ({ openLoginModal, setOpenLoginModal }: modalProps) => {
 
-export const LoginModal = ({ open, close }: modalOpenProps) => {
+    const { setModalLogin, setModalSignup, reqLogin, loadForm, setLoadForm } = useAuth()
 
     const closeModal = () => {
-        close(false)
+        setOpenLoginModal(false)
     }
 
     const schema = yup.object().shape({
-        email: yup.string().email('Email inválido').required('*Campo obrigatório'),
-        password: yup.string().required('*Campo obrigatório')
+        email: yup.string().email(' Email inválido!').required(' *Campo obrigatório'),
+        password: yup.string().required(' *Campo obrigatório')
     })
 
-    const { register, handleSubmit, formState: {errors} } = useForm<DataForm>({
+    const { register, handleSubmit, formState: { errors } } = useForm<DataForm>({
         resolver: yupResolver(schema)
     })
 
     const onSubmit = async (data: DataForm) => {
-        const response = await api.post("/login", data)
+        setLoadForm(true)
+        reqLogin(data)
+    }
+    
 
-        const { accessToken } = await response.data
-
-        const decodeToken:iDecode = await jwt_decode(accessToken)
-
-        const {sub} = await decodeToken
-
-        await localStorage.setItem('@delicious', sub)
-        await localStorage.setItem('@delicious/token', accessToken)
-
-        window.location.reload()
-
+    const signupOpenAndCloseLogin = async () => {
+        setModalLogin(false)
+        setModalSignup(true)
     }
 
-    return (
-        <Container open={open}>
-            <form onSubmit={handleSubmit(onSubmit)}>
-                <Closed onClick={closeModal}>X</Closed>
-                <h3>Entre em sua conta</h3>
 
-                <label>Email:</label>
-                <input
-                    type="text"
+
+    return (
+        <Container openLoginModal={openLoginModal}>
+            <form onSubmit={handleSubmit(onSubmit)}>
+                <CloseButton className="Close" onClick={closeModal} size="md" />
+                <h1>Entre em sua conta</h1>
+
+                <label>Email: <span>{errors.email?.message}</span></label>
+                <Input
+                    height="36px"
+                    size="sm"
+                    variant="outline"
+                    placeholder="Digite seu email"
                     {...register('email')}
                 />
-
-                <label>Senha:</label>
-                <input
+                <label>Senha: <span>{errors.password?.message}</span></label>
+                <Input
+                    height="36px"
+                    size="sm"
                     type="password"
+                    variant="outline"
+                    placeholder="Digite sua senha"
                     {...register('password')}
                 />
-
-                <button type="submit">Entrar</button>
-
+                <button
+                    disabled={loadForm}
+                    className="Submit">{loadForm ?
+                        <BeatLoader
+                            css={estilo}
+                            size="15"
+                            color="white"
+                        />
+                        : "Entrar"}
+                </button>
+                <p>Não possui uma conta? <span className="signupModal" onClick={signupOpenAndCloseLogin}>Cadastre-se</span></p>
+                <a href="/#">Esqueceu sua senha?</a>
             </form>
         </Container>
 
     )
 }
+
+const estilo = css`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+`;

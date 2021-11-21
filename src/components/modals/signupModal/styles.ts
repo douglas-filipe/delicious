@@ -29,6 +29,7 @@ export const Container = styled.div<modalProps>`
         flex-direction: column;
         border-radius: 12px;
         padding: 12px 20px;
+        color: #444444;
 
     }
     
@@ -90,11 +91,20 @@ export const Container = styled.div<modalProps>`
     }
 
     p a{
-        color: #F9575A
+        color: #F9575A;
+        cursor: pointer;
     }
 
     span{
         color: red;
+    }
+
+    .loginModal{
+        color: #F9575A;
+        font-weight: bold;
+        text-align: center;
+        font-size: 14px;
+        cursor: pointer;
     }
 
     @media(min-width: 768px){

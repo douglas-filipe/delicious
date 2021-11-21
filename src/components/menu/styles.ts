@@ -1,10 +1,10 @@
 import styled from "styled-components";
 
-interface menuProps {
-    openMenuMobile: boolean
+interface openMenuProps {
+    openMenu: boolean
 }
 
-export const Container = styled.header<menuProps>`
+export const Container = styled.header`
     background: #F9575A;
     height: 83px;
     width: 100%;
@@ -33,7 +33,6 @@ export const Container = styled.header<menuProps>`
         transform: translate(5%, 12%);
         top: 69px;
         right: 12px;
-        visibility: ${props => props.openMenuMobile ? "visible" : "hidden"};
 
         button{
             width: 70%;
@@ -131,7 +130,10 @@ export const Icons = styled.div`
             margin-left: 20px;
             font-size: 24px;
         }
+        -webkit-tap-highlight-color: transparent;
     }
+
+
 
     .Barra{
         width: 1px;
@@ -184,28 +186,22 @@ export const Desktop = styled.div`
     }
 `
 
-export const MenuContainer = styled.div`
-    width: 100%;
-    height: 420px;
-    position: absolute;
-    transform: translateY(15%);
-    top: 20px;
-    background: rgb(188,64,67);
-    background: linear-gradient(0deg, rgba(188,64,67,0) 0%, rgba(243,85,88,1) 2%, rgba(243,85,88,1) 84%, rgba(188,64,67,1) 100%);
-
+export const MenuContainer = styled.div<openMenuProps>`
+    width: 100vw;
+    height: 100vh;
+    top: 0; bottom: 0; left: 0; right: 0;
+    position: fixed;
+    background: rgba(1, 1, 1, 0.7);
+    visibility: ${props => props.openMenu ? "visible" : "hidden"};
+    
     .menuListCategories{
-        margin-top: 20px;
-        width: 100%;
-        height: 200px;
-        display: flex;
-        gap: 50px;
-        flex-wrap: wrap;
-        align-items: center;
-        justify-content: center;
+        width: 80vw;
+        height: 100vh;
+        background: #F9575A;
     }
 
     .menuListCategories .category{
-        color: #FECCBC;
+        color: white;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -228,18 +224,53 @@ export const MenuContainer = styled.div`
         padding: 0;
     }
 
+    .categories{
+        display: flex;
+        width: 200px;
+        flex-wrap: wrap;
+        gap: 20px;
+        justify-content: center;
+        align-items: center;
+        margin: auto;
+    }
+
+    
 `
 
 export const Mobile = styled.div`
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    align-items: flex-end;
+    width: 95%;
+    margin: auto;
+
     button{
-        margin: 20px;
+        margin: 5px auto;
         font-weight: bold;
+        width: 230px;
+        font-size: 1.2rem;
+    }
+
+    button:nth-child(1){
+        margin-top: 20px;
+        font-weight: bold;
+        font-size: 2rem;
     }
 
     .Enter{
         background: white;
         color: #F9575A;
+        margin-bottom: 20px;
+        width: 90px;
     }
+
+
+    .closeMenu{
+        width: 45px;
+        height: 45px;
+        position: relative;
+        margin-top: 10px;
+        cursor: pointer;
+    }
+
 `

@@ -7,32 +7,27 @@ import { Image } from "@chakra-ui/image"
 import { GiHamburgerMenu } from 'react-icons/gi'
 import { Button } from "@chakra-ui/button"
 import { SignupModal } from "../modals/signupModal"
-import { ReactComponent as Bolos } from '../../assets/icons/bolos.svg'
-import carnes from '../../assets/icons/carnes.svg'
-import doces from '../../assets/icons/doces.svg'
-import massas from '../../assets/icons/massas.svg'
-import salgados from '../../assets/icons/salgados.svg'
-import sopas from '../../assets/icons/sopas.svg'
 import { GiCakeSlice } from 'react-icons/gi'
 import { FaCandyCane } from 'react-icons/fa'
-import { Icon as Icone } from '@iconify/react'
-
-import unhealthyFoodOutline from '@iconify/icons-healthicons/unhealthy-food-outline'
-
+import { AiOutlineCloseCircle } from 'react-icons/ai'
+import { LoginModal } from "../modals/loginModal"
+import { useAuth } from "../../contexts/Auth"
 
 export const Menu = () => {
 
-    const [openMenuMobile, setOpenMenuMobile] = useState<boolean>(false)
-    const [openSignupModal, setOpenSignupModal] = useState<boolean>(false)
+    const [openMenu, setOpenMenu] = useState<boolean>(false)
+
+    const {modalLogin, setModalSignup, modalSignup, setModalLogin} = useAuth()
 
     return (
-        <Container openMenuMobile={openMenuMobile}>
-            <SignupModal openSignupModal={openSignupModal} setOpenSignupModal={setOpenSignupModal} />
+        <Container>
+            <SignupModal openSignupModal={modalSignup} setOpenSignupModal={setModalSignup} />
+            <LoginModal openLoginModal={modalLogin} setOpenLoginModal={setModalLogin}/>
             <Icons>
 
                 <Icon className="Search-Desktop" as={BiSearch} color="white" w={30} h={30} />
                 <div className="Barra"></div>
-                <div className="hamburguer">
+                <div className="hamburguer" onClick={() => setOpenMenu(true)}>
                     <Icon as={GiHamburgerMenu} color="white" w={30} h={30} />
                     <span>Receitas</span>
                 </div>
@@ -44,65 +39,68 @@ export const Menu = () => {
 
             <Desktop>
 
-                <button onClick={() => setOpenSignupModal(true)}>Cadastre-se</button>
+                <button onClick={() => setModalSignup(true)}>Cadastre-se</button>
                 <hr />
-                <Button className="Enter">Entrar</Button>
+                <Button onClick={() => setModalLogin(true)} className="Enter">Entrar</Button>
 
             </Desktop>
 
-            <MenuContainer>
-
-                <Mobile>
-
-                    <button onClick={() => setOpenSignupModal(true)}>Cadastre-se</button>
-                    <hr />
-                    <Button className="Enter">Entrar</Button>
-
-                </Mobile>
+            <MenuContainer openMenu={openMenu}>
 
                 <div className="menuListCategories">
 
-                    <div className="category">
-                        <GiCakeSlice />
-                        <h3>Bolos</h3>
-                    </div>
+                    <Mobile>
+                        <AiOutlineCloseCircle className="closeMenu" onClick={() => setOpenMenu(false)}/>
+                        <button className="Signup" onClick={() => setModalSignup(true)}>Cadastre-se</button>
+                        <Button onClick={() => setModalLogin(true)} className="Enter">Entrar</Button>
+
+                    </Mobile>
+
+                    <div className="categories">
+
+                        <div className="category">
+                            <GiCakeSlice />
+                            <h3>Bolos</h3>
+                        </div>
 
 
-                    <div className="category">
+                        <div className="category">
 
-                        <FaCandyCane />
-                        <h3>Carnes</h3>
+                            <FaCandyCane />
+                            <h3>Carnes</h3>
 
-                    </div>
-
-
-                    <div className="category">
-
-                        <FaCandyCane />
-                        <h3>Doces</h3>
-
-                    </div>
+                        </div>
 
 
-                    <div className="category">
+                        <div className="category">
 
-                        <FaCandyCane />
-                        <h3>Massas</h3>
+                            <FaCandyCane />
+                            <h3>Doces</h3>
 
-                    </div>
-
-
-                    <div className="category">
-                        <FaCandyCane />
-                        <h3>Salgados</h3>
-
-                    </div>
+                        </div>
 
 
-                    <div className="category">
+                        <div className="category">
 
-                        <FaCandyCane />
-                        <h3>Sopas</h3>
+                            <FaCandyCane />
+                            <h3>Massas</h3>
+
+                        </div>
+
+
+                        <div className="category">
+                            <FaCandyCane />
+                            <h3>Salgados</h3>
+
+                        </div>
+
+
+                        <div className="category">
+
+                            <FaCandyCane />
+                            <h3>Sopas</h3>
+
+                        </div>
 
                     </div>
 

@@ -5,17 +5,18 @@ import * as yup from 'yup'
 import api from "../../../services/api"
 import { Input, CloseButton, useToast } from '@chakra-ui/react'
 import { BeatLoader } from 'react-spinners'
-import { Dispatch, useState } from "react"
+import { useState } from "react"
 import { css } from '@emotion/react'
 import { DataForm } from "../../../types/dataForm"
+import { useAuth } from "../../../contexts/Auth"
 
-interface modalProps{
+interface modalProps {
     openSignupModal: boolean,
     setOpenSignupModal: (openSignupModal: boolean) => void
 }
 
-export const SignupModal = ({openSignupModal, setOpenSignupModal}:modalProps) => {
-
+export const SignupModal = ({ openSignupModal, setOpenSignupModal }: modalProps) => {
+    const { setModalLogin, setModalSignup } = useAuth()
     const toast = useToast()
 
     const [loadForm, setLoadForm] = useState<boolean>(false)
@@ -45,6 +46,11 @@ export const SignupModal = ({openSignupModal, setOpenSignupModal}:modalProps) =>
             await toast({ title: `Email já cadastrado`, status: 'error', isClosable: true, position: "top-right" })
             setLoadForm(false)
         }
+    }
+
+    const loginOpenAndCloseSignup = async () => {
+        await setModalLogin(true)
+        setModalSignup(false)
     }
 
 
@@ -91,7 +97,7 @@ export const SignupModal = ({openSignupModal, setOpenSignupModal}:modalProps) =>
                         />
                         : "Enviar"}
                 </button>
-                <p>Já tem uma conta? <a href="#">Entre</a></p>
+                <p>Já tem uma conta? <span className="loginModal" onClick={loginOpenAndCloseSignup}>Entre</span></p>
             </form>
         </Container>
 
