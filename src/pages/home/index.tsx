@@ -1,4 +1,5 @@
 import { PagesFooter } from "../../components/home/footer";
+import { HomeHighLights } from "../../components/home/highlight";
 import { SignupModal } from "../../components/modals/signupModal";
 import {
   Container,
@@ -14,7 +15,9 @@ export const Home = () => {
     <MainContainer>
       <Container>
         <Header>hearder</Header>
-        <Highlight>destaques</Highlight>
+        <Highlight>
+          <HomeHighLights />
+        </Highlight>
         <Content></Content>
         <Footer>
           <PagesFooter></PagesFooter>

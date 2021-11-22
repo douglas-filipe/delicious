@@ -23,8 +23,8 @@ export const Container = styled.div`
       right: 0;
       border-top-color: transparent;
       border-left-color: transparent;
-      border-bottom-color: var(--white);
-      border-right-color: var(--white);
+      border-bottom-color: transparent;
+      border-right-color: transparent;
     }
 
     .teste::before {

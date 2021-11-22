@@ -7,6 +7,7 @@ export const MainContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  background-color: var(--background);
 `;
 
 export const Container = styled.div`
@@ -35,7 +36,6 @@ export const Header = styled.div`
 
 export const Highlight = styled.div`
   grid-area: Highlight;
-  background-color: whitesmoke;
 `;
 
 export const Content = styled.div`
@@ -44,6 +44,4 @@ export const Content = styled.div`
 
 export const Footer = styled.div`
   grid-area: Footer;
-
-  background-color: whitesmoke;
 `;
