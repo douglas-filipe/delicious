@@ -48,6 +48,8 @@ export const Container = styled.div`
     align-items: center;
     justify-content: center;
     position: relative;
+    overflow: hidden;
+
     ::after {
       content: "";
       position: absolute;
@@ -62,6 +64,10 @@ export const Container = styled.div`
     }
     img {
       border-radius: 5px;
+      transition: transform 0.5s ease;
+    }
+    img:hover {
+      transform: scale(1.2);
     }
   }
   .second {
@@ -70,6 +76,8 @@ export const Container = styled.div`
     align-items: center;
     justify-content: center;
     position: relative;
+    overflow: hidden;
+
     ::after {
       content: "";
       position: absolute;
@@ -84,6 +92,10 @@ export const Container = styled.div`
     }
     img {
       border-radius: 5px;
+      transition: transform 0.5s ease;
+    }
+    img:hover {
+      transform: scale(1.2);
     }
   }
   .tird {
@@ -92,6 +104,8 @@ export const Container = styled.div`
     align-items: center;
     justify-content: center;
     position: relative;
+    overflow: hidden;
+
     ::after {
       content: "";
       position: absolute;
@@ -106,6 +120,10 @@ export const Container = styled.div`
     }
     img {
       border-radius: 5px;
+      transition: transform 0.5s ease;
+    }
+    img:hover {
+      transform: scale(1.2);
     }
   }
 
