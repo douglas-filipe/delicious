@@ -79,7 +79,7 @@ export const Participants = styled.div`
   }
   @media (min-width: 768px) {
     margin: 10px;
-    font-size: 0.75rem;
+    font-size: 0.9rem;
     font-weight: bold;
 
     .icons {

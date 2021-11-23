@@ -1,7 +1,6 @@
 import { Content, Container, Participants } from "./style";
 import { IconButton } from "@chakra-ui/react";
-import { FaLinkedinIn } from "react-icons/fa";
-import linkedin from "../../../assets/img/linkedin.png";
+import { FaLinkedin } from "react-icons/fa";
 export const PagesFooter = () => {
   const integrantes = [
     "Anthony F.",
@@ -19,7 +18,7 @@ export const PagesFooter = () => {
             <IconButton
               aria-label="Search database"
               className="icons"
-              icon={<FaLinkedinIn />}
+              icon={<FaLinkedin />}
             />
           </Participants>
         ))}

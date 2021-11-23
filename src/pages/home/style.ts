@@ -1,13 +1,9 @@
 import styled from "styled-components";
 
 export const MainContainer = styled.div`
-  width: 100vw;
-  height: 100vh;
-
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: var(--background);
 `;
 
 export const Container = styled.div`
@@ -15,7 +11,7 @@ export const Container = styled.div`
   height: 100vh;
   display: grid;
 
-  grid-template: 1fr 4fr 4fr 1fr / 1fr;
+  grid-template: 2fr 4fr 8fr 2fr / 1fr;
   grid-template-areas:
     "Header"
     "Highlight"
@@ -36,10 +32,55 @@ export const Header = styled.div`
 
 export const Highlight = styled.div`
   grid-area: Highlight;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+
+  .titles {
+    font-size: 2rem;
+    font-weight: bold;
+    position: relative;
+  }
+  .titles::after {
+    content: "";
+    position: absolute;
+    border: 2px solid var(--main-color);
+    width: 85px;
+    left: 70px;
+    top: 45px;
+  }
+  @media (min-width: 768px) {
+    ::after {
+      content: "";
+      position: relative;
+      border-bottom: 5px solid var(--main-color);
+      width: 100%;
+      top: 50px;
+    }
+  }
 `;
 
 export const Content = styled.div`
   grid-area: Content;
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+  .titles {
+    font-size: 2rem;
+    font-weight: bold;
+    position: relative;
+  }
+  .titles::after {
+    content: "";
+    position: absolute;
+    border: 2px solid var(--main-color);
+    width: 95px;
+    left: 165px;
+    top: 45px;
+  }
+  @media (min-width: 768px) {
+    margin-top: 60px;
+  }
 `;
 
 export const Footer = styled.div`

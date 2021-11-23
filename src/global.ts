@@ -13,7 +13,13 @@ export const GlobalStyle = createGlobalStyle`
         height: 100vh;
         padding: 0;
         box-sizing: border-box;
-        background: #F9F9F9;
+
     }
+    ::-webkit-scrollbar {
+     display: none;
+
+    }
+    
+    
 
 `;

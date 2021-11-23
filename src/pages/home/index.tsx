@@ -1,6 +1,7 @@
 import { PagesFooter } from "../../components/home/footer";
 import { HomeHighLights } from "../../components/home/highlight";
-import { SignupModal } from "../../components/modals/signupModal";
+import { RecipeTips } from "../../components/home/tips";
+// import { SignupModal } from "../../components/modals/signupModal";
 import {
   Container,
   Header,
@@ -16,9 +17,13 @@ export const Home = () => {
       <Container>
         <Header>hearder</Header>
         <Highlight>
+          <p className="titles">Destaques</p>
           <HomeHighLights />
         </Highlight>
-        <Content></Content>
+        <Content>
+          <p className="titles">Receitas recentes</p>
+          <RecipeTips />
+        </Content>
         <Footer>
           <PagesFooter></PagesFooter>
         </Footer>

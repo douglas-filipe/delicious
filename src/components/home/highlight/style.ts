@@ -6,11 +6,13 @@ export const Container = styled.div`
 
   display: grid;
   gap: 10px;
-  grid-template: 3fr 2fr / 1fr 1fr;
+  grid-template: 2fr 2fr / 1fr 1fr;
   grid-template-areas:
     "main main"
     "second tird";
   transition: all 0.3s ease;
+
+  margin-top: 10px;
 
   ul {
     margin: auto;
@@ -148,7 +150,7 @@ export const Container = styled.div`
         height: 60px;
         display: block;
         left: 32.5%;
-        bottom: 18%;
+        bottom: 17%;
       }
       .title {
         display: initial;
