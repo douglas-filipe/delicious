@@ -8,7 +8,9 @@ export const Container = styled.header`
     background: #F9575A;
     height: 83px;
     width: 100%;
-    color: white; 
+    color: white;
+    position: relative;
+    z-index: 99;
     
 
     display: flex;
